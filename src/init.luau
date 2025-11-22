@@ -8,6 +8,7 @@ local async = require("@self/reactive/async")
 local bind = require("@self/instances/bind")
 local changed = require("@self/instances/changed")
 local cleanup = require("@self/reactive/cleanup")
+local components = require("@self/components")
 local create = require("@self/instances/create")
 local deferred = require("@self/reactive/deferred")
 local derive = require("@self/reactive/derive")
@@ -16,6 +17,7 @@ local for_keys = require("@self/instances/for_keys")
 local for_values = require("@self/instances/for_values")
 local graph = require("@self/reactive/graph")
 local interval = require("@self/utils/interval")
+local jsx = require("@self/jsx")
 local lerp = require("@self/anim/lerp")
 local mount = require("@self/instances/mount")
 local read = require("@self/utils/read")
@@ -52,6 +54,7 @@ end
 
 if game then
 	local RunService = game:GetService("RunService")
+	local components = require("@self/components")
 
 	scheduler_thread = task.spawn(function()
 		while true do
@@ -108,5 +111,18 @@ fluid.provide_scheduler = function(): (delta_time: number) -> ()
 end
 
 fluid.__SCHEDULER_INTERFACE = scheduler
+
+-- TypeScript
+fluid.jsx = jsx
+fluid.match = switch
+fluid.Fragment = components.Fragment
+fluid.Switch = components.Switch
+fluid.Case = components.Case
+fluid.SwitchDelay = components.SwitchDelay
+fluid.CaseDelay = components.CaseDelay
+fluid.ForValue = components.ForValue
+fluid.ForIndex = components.ForIndex
+fluid.Show = components.Show
+fluid.ShowDelay = components.ShowDelay
 
 return fluid

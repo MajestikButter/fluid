@@ -1,10 +1,43 @@
 {
-  "devDependencies": {
-    "vitepress": "^1.6.3"
-  },
-  "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
-  }
+	"name": "@rbxts/fluid",
+	"version": "0.6.4",
+	"description": "",
+	"main": "src/init.lua",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MajestikButter/fluid"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"types": "src/index.d.ts",
+	"files": [
+		"src",
+		"!**/*.tsbuildinfo"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"vitepress": "^1.6.3",
+		"@rbxts/compiler-types": "^2.3.0-types.2",
+		"@rbxts/types": "^1.0.801",
+		"@typescript-eslint/eslint-plugin": "^6.2.0",
+		"@typescript-eslint/parser": "^6.2.0",
+		"eslint": "^8.46.0",
+		"eslint-config-prettier": "^8.9.0",
+		"eslint-plugin-prettier": "^5.0.0",
+		"eslint-plugin-roblox-ts": "^0.0.35",
+		"prettier": "^3.0.0",
+		"roblox-ts": "^2.3.0",
+		"typescript": "^5.4.5"
+	},
+	"scripts": {
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs",
+		"docs:preview": "vitepress preview docs",
+		"build": "rbxtsc",
+		"watch": "rbxtsc -w",
+		"prepublishOnly": "npm run build"
+	}
 }
