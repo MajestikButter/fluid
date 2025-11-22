@@ -35,7 +35,7 @@ declare namespace Fluid {
 		callback: (value: WritableInstanceProperties<T>[K]) => void
 	): Action<T>;
 
-	function action<T extends Instance>(callback: (instance: T) => Cleanup | void, priority?: number): Action<T>;
+	function action<T extends Instance>(callback: (instance: T) => void, priority?: number): Action<T>;
 	function is_action(value: any): value is Action<any>;
 
 	function cleanup(value: Disposable): void;
