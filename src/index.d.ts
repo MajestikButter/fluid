@@ -97,8 +97,8 @@ declare namespace Fluid {
 	): () => R[];
 	function read<T>(source: UsedAs<T>): T;
 
-	function show<T, U = undefined>(source: () => any, component: () => T, fallback?: () => U): () => T | U;
-	function show_delay<T, U = undefined>(source: () => any, component: () => T, fallback?: () => U): () => (T | U)[];
+	function show<T, U = undefined>(source: Readable<any>, component: () => T, fallback?: () => U): () => T | U;
+	function show_delay<T, U = undefined>(source: Readable<any>, component: () => T, fallback?: () => U): () => (T | U)[];
 
 	// switch is a reserved keyword
 	function match<T, U>(condition: () => T): (options: Map<T, UsedAs<U>>) => U;
@@ -141,15 +141,17 @@ declare namespace Fluid {
 		children: (value: V, key: Readable<K>, active: UsedAs<boolean>) => R | LuaTuple<[R, number | undefined]>;
 	}): () => R[];
 
+	function Switch(props: { condition: Readable<any>; children: () => Node }): Node;
+
 	function Case<T>(props: { match: T; children: () => Node | void }): Node;
 	function CaseDelay<T>(props: {
 		match: T;
 		children: (active: UsedAs<boolean>) => Node | LuaTuple<[Node, number | undefined]>;
 	}): Node;
 
-	function Show(props: { when: UsedAs<any>; children: () => Node; fallback?: () => Node }): () => Node;
+	function Show(props: { when: Readable<any>; children: () => Node; fallback?: () => Node }): () => Node;
 	function ShowDelay(props: {
-		when: UsedAs<any>;
+		when: Readable<any>;
 		children: () => Node | LuaTuple<[Node, number | undefined]>;
 		fallback?: () => Node | LuaTuple<[Node, number | undefined]>;
 	}): () => Node;
