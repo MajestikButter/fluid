@@ -1,8 +1,8 @@
 local indexes = require("./instances/for_keys")
 local show = require("./utils/show")
-local show_delay = require("@src/utils/show_delay")
+local show_delay = require("./utils/show_delay")
 local switch = require("./utils/switch")
-local switch_delay = require("@src/utils/switch_delay")
+local switch_delay = require("./utils/switch_delay")
 local types = require("./reactive/types")
 local values = require("./instances/for_values")
 
