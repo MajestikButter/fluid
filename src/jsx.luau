@@ -1,8 +1,8 @@
 local ReflectionService = game:GetService("ReflectionService")
-local action = require("@self/instances/action").create
-local changed = require("@self/instances/changed")
-local create = require("@self/instances/create")
-local untrack = require("@self/reactive/untrack")
+local action = require("./instances/action").create
+local changed = require("./instances/changed")
+local create = require("./instances/create")
+local untrack = require("./reactive/untrack")
 
 type Props = { [any]: any }
 
