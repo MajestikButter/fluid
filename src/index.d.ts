@@ -141,7 +141,8 @@ declare namespace Fluid {
 		children: (value: V, key: Readable<K>, active: UsedAs<boolean>) => R | LuaTuple<[R, number | undefined]>;
 	}): () => R[];
 
-	function Switch(props: { condition: Readable<any>; children: () => Node }): Node;
+	function Switch(props: { condition: Readable<any>; children: Node }): Node;
+	function SwitchDelay(props: { condition: Readable<any>; children: Node }): Node;
 
 	function Case<T>(props: { match: T; children: () => Node | void }): Node;
 	function CaseDelay<T>(props: {
